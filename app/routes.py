@@ -11,7 +11,6 @@ from app.models import User
 @app.route("/index")
 @login_required
 def index():
-    user = {"username": "Christophe"}
     posts = [
         {"author": {"username": "Charlotte"}, "body": "It's a beautiful day!"},
         {"author": {"username": "Clément"}, "body": "I am very smart."},
@@ -59,3 +58,14 @@ def register():
         flash("Congratulations, you are now a registered user!")
         return redirect(url_for("login"))
     return render_template("register.html", title="Register", form=form)
+
+
+@app.route("/user/<username>")
+@login_required
+def user(username):
+    user = db.first_or_404(sa.select(User).where(User.username == username))
+    posts = [
+        {"author": user, "body": "Test post #1"},
+        {"author": user, "body": "Test post #2"},
+    ]
+    return render_template("user.html", user=user, posts=posts)
