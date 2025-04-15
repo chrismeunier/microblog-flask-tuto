@@ -15,10 +15,11 @@ login = LoginManager(app)
 login.login_view = "login"
 
 if not app.debug:
-    if not Path("app", "logs").exists():
-        Path("app", "logs").mkdir()
+    logs_dir = Path("app", "logs")
+    if not logs_dir.exists():
+        logs_dir.mkdir()
     file_handler = RotatingFileHandler(
-        "logs/microblog.log", maxBytes=10240, backupCount=10
+        logs_dir / "microblog.log", maxBytes=10240, backupCount=10
     )
     file_handler.setFormatter(
         logging.Formatter(
