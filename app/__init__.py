@@ -3,6 +3,8 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from pathlib import Path
+
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -11,4 +13,8 @@ migrate = Migrate(app, db)
 login = LoginManager(app)
 login.login_view = "login"
 
-from app import routes, models
+if not app.debug:
+    if not Path("app", "logs").exists():
+        Path("app", "logs").mkdir()
+
+from app import routes, models, errors
