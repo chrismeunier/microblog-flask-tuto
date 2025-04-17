@@ -26,9 +26,18 @@ def index():
         db.session.commit()
         flash("Your post is posted :)")
         return redirect(url_for("index"))
-    posts = db.session.scalars(current_user.following_posts()).all()
+
+    page = request.args.get("page", 1, int)
+    posts = db.paginate(current_user.following_posts(), page=page, per_page=app.config["POSTS_PER_PAGE"], error_out=False)
     return render_template("index.html", title="Home", form=form, posts=posts)
 
+@app.route("/explore")
+@login_required
+def explore():
+    page = request.args.get("page", 1, int)
+    query = sa.select(Post).order_by(Post.timestamp.desc())
+    posts = db.paginate(query, page=page, per_page=app.config["POSTS_PER_PAGE"], error_out=False)
+    return render_template("index.html", title="Explore", posts=posts)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -75,10 +84,7 @@ def register():
 @login_required
 def user(username):
     user = db.first_or_404(sa.select(User).where(User.username == username))
-    posts = [
-        {"author": user, "body": "Test post #1"},
-        {"author": user, "body": "Test post #2"},
-    ]
+    posts = db.session.scalars(current_user.following_posts()).all()
     form = EmptyForm()
     return render_template("user.html", user=user, posts=posts, form=form)
 
