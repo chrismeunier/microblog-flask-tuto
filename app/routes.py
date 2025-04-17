@@ -107,9 +107,23 @@ def register():
 @login_required
 def user(username):
     user = db.first_or_404(sa.select(User).where(User.username == username))
-    posts = db.session.scalars(current_user.following_posts()).all()
+    page = request.args.get(key="page", default=1, type=int)
+    query = user.posts.select().order_by(Post.timestamp.desc())
+    posts = db.paginate(
+        query, page=page, per_page=app.config["POSTS_PER_PAGE"], error_out=False
+    )
+    prev_url = url_for("user", username=username, page=posts.prev_num) if posts.has_prev else None
+    next_url = url_for("user", username=username, page=posts.next_num) if posts.has_next else None
+
     form = EmptyForm()
-    return render_template("user.html", user=user, posts=posts, form=form)
+    return render_template(
+        "user.html",
+        user=user,
+        posts=posts,
+        form=form,
+        prev_url=prev_url,
+        next_url=next_url,
+    )
 
 
 @app.route("/edit_profile", methods=["GET", "POST"])
