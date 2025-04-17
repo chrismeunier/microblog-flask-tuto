@@ -28,16 +28,39 @@ def index():
         return redirect(url_for("index"))
 
     page = request.args.get("page", 1, int)
-    posts = db.paginate(current_user.following_posts(), page=page, per_page=app.config["POSTS_PER_PAGE"], error_out=False)
-    return render_template("index.html", title="Home", form=form, posts=posts)
+    posts = db.paginate(
+        current_user.following_posts(),
+        page=page,
+        per_page=app.config["POSTS_PER_PAGE"],
+        error_out=False,
+    )
+    # iterating over the posts (Paginate object) is the same as iterating over posts.items (the actual Post list)
+    prev_url = url_for("index", page=posts.prev_num) if posts.has_prev else None
+    next_url = url_for("index", page=posts.next_num) if posts.has_next else None
+    return render_template(
+        "index.html",
+        title="Home",
+        form=form,
+        posts=posts,
+        prev_url=prev_url,
+        next_url=next_url,
+    )
+
 
 @app.route("/explore")
 @login_required
 def explore():
     page = request.args.get("page", 1, int)
     query = sa.select(Post).order_by(Post.timestamp.desc())
-    posts = db.paginate(query, page=page, per_page=app.config["POSTS_PER_PAGE"], error_out=False)
-    return render_template("index.html", title="Explore", posts=posts)
+    posts = db.paginate(
+        query, page=page, per_page=app.config["POSTS_PER_PAGE"], error_out=False
+    )
+    prev_url = url_for("explore", page=posts.prev_num) if posts.has_prev else None
+    next_url = url_for("explore", page=posts.next_num) if posts.has_next else None
+    return render_template(
+        "index.html", title="Explore", posts=posts, prev_url=prev_url, next_url=next_url
+    )
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
