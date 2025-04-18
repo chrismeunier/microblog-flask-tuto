@@ -45,12 +45,25 @@ class EditProfileForm(FlaskForm):
         super().__init__(*args, **kwargs)
         self.original_username = original_username
 
-    # def validate_username(self, username):
-        # if username.data == self.original_username:
-            # return
-        # user = db.session.scalar(sa.select(User).where(User.username == username.data))
-        # if user is not None:
-            # raise ValidationError("Please use a different username.")
+    def validate_username(self, username):
+        if username.data == self.original_username:
+            return
+        user = db.session.scalar(sa.select(User).where(User.username == username.data))
+        if user is not None:
+            raise ValidationError("Please use a different username.")
+
+
+class ResetPasswordRequestForm(FlaskForm):
+    email = StringField("Email", validators=[DataRequired(), Email()])
+    submit = SubmitField("Request password reset")
+
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField("Password", validators=[DataRequired()])
+    password2 = PasswordField(
+        "Repeat Password", validators=[DataRequired(), EqualTo("password")]
+    )
+    submit = SubmitField("Set new password")
 
 
 class EmptyForm(FlaskForm):

@@ -12,9 +12,9 @@ class Config:
     # To get the "emails" sent when there is an error in a terminal run:
     # aiosmtpd -n -c aiosmtpd.handlers.Debugging -l 127.0.0.1:8025
     # or with whatever address and port the app uses
-    MAIL_SERVER = os.environ.get('MAIL_SERVER')
-    MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
-    MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = ['sysadmin@aiosmtpd.com']
+    MAIL_SERVER = os.environ.get("MAIL_SERVER")
+    MAIL_PORT = int(os.environ.get("MAIL_PORT") or 25)
+    MAIL_USE_TLS = os.environ.get("MAIL_USE_TLS") is not None
+    MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
+    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    ADMINS = ["noreply.password.reset@aiosmtpd.com", "sysadmin@aiosmtpd.com"]
