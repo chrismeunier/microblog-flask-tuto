@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, g
 from app import app, db
 from app.forms import (
     LoginForm,
@@ -10,7 +10,7 @@ from app.forms import (
     ResetPasswordForm,
 )
 from flask_login import current_user, login_user, logout_user, login_required
-from flask_babel import _
+from flask_babel import _, get_locale
 import sqlalchemy as sa
 from urllib.parse import urlsplit
 from datetime import datetime, timezone
@@ -23,6 +23,7 @@ def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.now(timezone.utc)
         db.session.commit()
+    g.locale = get_locale()
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -68,7 +69,11 @@ def explore():
     prev_url = url_for("explore", page=posts.prev_num) if posts.has_prev else None
     next_url = url_for("explore", page=posts.next_num) if posts.has_next else None
     return render_template(
-        "index.html", title=_("Explore"), posts=posts, prev_url=prev_url, next_url=next_url
+        "index.html",
+        title=_("Explore"),
+        posts=posts,
+        prev_url=prev_url,
+        next_url=next_url,
     )
 
 
@@ -236,4 +241,6 @@ def reset_password(token):
         flash(_("Password reset!"))
         return redirect(url_for("login"))
 
-    return render_template("reset_password.html", title=_("Set new password"), form=form)
+    return render_template(
+        "reset_password.html", title=_("Set new password"), form=form
+    )
