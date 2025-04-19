@@ -9,3 +9,4 @@ flask-mail # send emails to the user to reset their password
 pyjwt # JSON Web Tokens, for unique links to reset password
 aiosmtpd # SMTP mail debugging server
 flask-moment # for local datetime display
+flask-babel # for translations!
