@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-04-19 20:50+0200\n"
+"POT-Creation-Date: 2025-04-19 21:20+0200\n"
 "PO-Revision-Date: 2025-04-19 20:51+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.17.0\n"
 
-#: app/__init__.py:22
+#: app/__init__.py:23
 msgid "Please log in to access this page."
 msgstr "Veuillez vous connecter pour accéder à cette page."
 
@@ -76,19 +76,23 @@ msgstr "Définir un nouveau mot de passe"
 
 #: app/forms.py:70 app/forms.py:77
 msgid "Submit"
-msgstr "Soumettre"
+msgstr "Envoyer"
+
+#: app/forms.py:75
+msgid "Say something"
+msgstr "Dis quelque chose"
 
 #: app/routes.py:37
 msgid "Your post is posted :)"
 msgstr "Votre publication a été publiée :)"
 
-#: app/routes.py:52
+#: app/routes.py:52 app/templates/base.html:29
 msgid "Home"
 msgstr "Accueil"
 
 #: app/routes.py:71 app/templates/base.html:33
 msgid "Explore"
-msgstr "Explorer"
+msgstr "Découvrir"
 
 #: app/routes.py:85
 msgid "Invalid username or password"
@@ -134,7 +138,9 @@ msgstr "Vous ne suivez plus %(username)s."
 
 #: app/routes.py:217
 msgid "Check your emails for the instructions to reset your password"
-msgstr "Vérifiez vos e-mails pour les instructions de réinitialisation de votre mot de passe"
+msgstr ""
+"Vérifiez vos e-mails pour les instructions de réinitialisation de votre "
+"mot de passe"
 
 #: app/routes.py:221
 msgid "Reset password"
@@ -186,11 +192,11 @@ msgstr "Bonjour"
 
 #: app/templates/index.html:37 app/templates/user.html:46
 msgid "Newer posts"
-msgstr "Articles plus récents"
+msgstr "Messages plus récents"
 
 #: app/templates/index.html:40 app/templates/user.html:49
 msgid "Older posts"
-msgstr "Articles plus anciens"
+msgstr "Messages plus anciens"
 
 #: app/templates/login.html:5
 msgid "Sign In"
@@ -265,12 +271,16 @@ msgstr "cliquez ici"
 msgid ""
 "Alternatively, you can paste the following link in your browser's address"
 " bar"
-msgstr "Sinon, vous pouvez copier le lien suivant dans la barre d'adresse de votre navigateur"
+msgstr ""
+"Sinon, vous pouvez copier le lien suivant dans la barre d'adresse de "
+"votre navigateur"
 
 #: app/templates/email/reset_password.html:13
 #: app/templates/email/reset_password.txt:7
 msgid "If you have not requested a password reset simply ignore this message."
-msgstr "Si vous n'avez pas demandé de réinitialisation de mot de passe, ignorez ce message."
+msgstr ""
+"Si vous n'avez pas demandé de réinitialisation de mot de passe, ignorez "
+"ce message."
 
 #: app/templates/email/reset_password.html:14
 #: app/templates/email/reset_password.txt:9

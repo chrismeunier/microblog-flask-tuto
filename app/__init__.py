@@ -11,7 +11,7 @@ import logging
 from logging.handlers import RotatingFileHandler, SMTPHandler
 
 def get_locale():
-    return request.accept_languages.best_match(['fr'])
+    return "fr"
     # return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 app = Flask(__name__)
