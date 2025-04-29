@@ -17,6 +17,7 @@ from datetime import datetime, timezone
 from langdetect import detect, LangDetectException
 from app.models import User, Post
 from app.email import send_password_reset_email
+from app.translate import translate
 
 
 @app.before_request
@@ -249,3 +250,12 @@ def reset_password(token):
     return render_template(
         "reset_password.html", title=_("Set new password"), form=form
     )
+
+
+@app.route("/translate", methods=["POST"])
+@login_required
+def translate_text():
+    data = request.get_json()
+    return {
+        "text": translate(data["text"], data["source_language"], data["dest_language"])
+    }
