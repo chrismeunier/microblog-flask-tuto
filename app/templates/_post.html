@@ -10,10 +10,14 @@
                 {{ post.author.username }}</a>
             {{_("said")}} {{ moment(post.timestamp).fromNow() }}:
             <br>
-            {{ post.body }}
+            <span id="post{{ post.id }}">{{ post.body }}</span>
             {% if post.language and post.language != g.locale %}
-                <br><br>
-                <a href="#">{{_("Translate")}}</a>
+            <br><br>
+            <span id="translation{{ post.id }}"> <a href="javascript:translate('post{{post.id}}',
+                    'translation{{post.id}}',
+                    '{{post.language}}',
+                    '{{g.locale}}')">{{_("Translate")}}</a>
+            </span>
             {% endif %}
         </td>
     </tr>
