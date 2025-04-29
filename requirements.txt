@@ -10,3 +10,5 @@ pyjwt # JSON Web Tokens, for unique links to reset password
 aiosmtpd # SMTP mail debugging server
 flask-moment # for local datetime display
 flask-babel # for translations!
+langdetect # for auto-translation, detects a text's language
+requests # to query the Azure API for translations

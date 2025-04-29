@@ -19,3 +19,5 @@ class Config:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     ADMINS = ["noreply.password.reset@aiosmtpd.com", "sysadmin@aiosmtpd.com"]
     LANGUAGES = ["en", "fr"]
+    MS_TRANSLATOR_KEY = os.environ.get("MS_TRANSLATOR_KEY")
+    MS_TRANSLATOR_LOCATION = os.environ.get("MS_TRANSLATOR_LOCATION")
