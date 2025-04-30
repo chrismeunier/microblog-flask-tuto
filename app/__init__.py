@@ -19,7 +19,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
-login.login_view = "login"
+login.login_view = "auth.login"
 login.login_message = _l("Please log in to access this page.")
 mail = Mail(app)
 moment = Moment(app)
@@ -27,6 +27,8 @@ babel = Babel(app, locale_selector=get_locale)
 
 from app.errors import bp as error_bp
 app.register_blueprint(error_bp)
+from app.auth import bp as auth_bp
+app.register_blueprint(auth_bp, url_prefix="/auth")
 
 if not app.debug:
     if app.config["MAIL_SERVER"]:
