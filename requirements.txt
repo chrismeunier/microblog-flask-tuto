@@ -1,14 +1,38 @@
-python-dotenv # define envrionmnent variables in a ".flaskenv" file
-flask
-flask-wtf # for html forms
-flask-sqlalchemy # for SQLite database
-flask-migrate # to manage the updated to the database tables
-flask-login # manage user login and sessions
-email-validator # to check if an email address is valid in a form
-flask-mail # send emails to the user to reset their password
-pyjwt # JSON Web Tokens, for unique links to reset password
-aiosmtpd # SMTP mail debugging server
-flask-moment # for local datetime display
-flask-babel # for translations!
-langdetect # for auto-translation, detects a text's language
-requests # to query the Azure API for translations
+aiosmtpd==1.4.6
+alembic==1.15.2
+atpublic==5.1
+attrs==25.3.0
+babel==2.17.0
+blinker==1.9.0
+certifi==2025.1.31
+charset-normalizer==3.4.1
+click==8.1.8
+colorama==0.4.6
+dnspython==2.7.0
+email_validator==2.2.0
+Flask==3.1.0
+flask-babel==4.0.0
+Flask-Login==0.6.3
+Flask-Mail==0.10.0
+Flask-Migrate==4.1.0
+Flask-Moment==1.0.6
+Flask-SQLAlchemy==3.1.1
+Flask-WTF==1.2.2
+greenlet==3.1.1
+idna==3.10
+itsdangerous==2.2.0
+Jinja2==3.1.6
+langdetect==1.0.9
+Mako==1.3.10
+MarkupSafe==3.0.2
+packaging==25.0
+PyJWT==2.10.1
+python-dotenv==1.1.0
+pytz==2025.2
+requests==2.32.3
+six==1.17.0
+SQLAlchemy==2.0.40
+typing_extensions==4.13.2
+urllib3==2.4.0
+Werkzeug==3.1.3
+WTForms==3.2.1

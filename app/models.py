@@ -7,7 +7,8 @@ import sqlalchemy as sa
 import sqlalchemy.orm as so
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from app import db, login, app
+from app import db, login
+from flask import current_app
 
 followers = sa.Table(
     "followers",
@@ -51,14 +52,14 @@ class User(UserMixin, db.Model):
     def get_reset_password_token(self, expire_in=600):
         return jwt.encode(
             {"user_id": self.id, "exp": time() + expire_in},
-            key=app.config["SECRET_KEY"],
+            key=current_app.config["SECRET_KEY"],
             algorithm="HS256",
         )
 
     @staticmethod
     def verify_reset_password_token(token):
         try:
-            id = jwt.decode(token, key=app.config["SECRET_KEY"], algorithms=["HS256"])[
+            id = jwt.decode(token, key=current_app.config["SECRET_KEY"], algorithms=["HS256"])[
                 "user_id"
             ]
         except:

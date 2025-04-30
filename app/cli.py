@@ -1,7 +1,8 @@
-from app import app
+from flask import Blueprint
 import os
 import click
 
+bp = Blueprint("cli", __name__, cli_group=None)
 
 def babel_extract():
     if os.system("pybabel extract -F babel.cfg -k _l -o messages.pot ."):
@@ -12,7 +13,7 @@ def babel_cleanup():
     os.remove("messages.pot")
 
 
-@app.cli.group()
+@bp.cli.group()
 def translate():
     """Translation commands:
     Adding `flask translate init [LANG]`, `flask translate update` and `flask translate compile`

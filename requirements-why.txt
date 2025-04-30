@@ -1,0 +1,14 @@
+python-dotenv # define envrionmnent variables in a ".flaskenv" file
+flask
+flask-wtf # for html forms
+flask-sqlalchemy # for SQLite database
+flask-migrate # to manage the updated to the database tables
+flask-login # manage user login and sessions
+email-validator # to check if an email address is valid in a form
+flask-mail # send emails to the user to reset their password
+pyjwt # JSON Web Tokens, for unique links to reset password
+aiosmtpd # SMTP mail debugging server
+flask-moment # for local datetime display
+flask-babel # for translations!
+langdetect # for auto-translation, detects a text's language
+requests # to query the Azure API for translations

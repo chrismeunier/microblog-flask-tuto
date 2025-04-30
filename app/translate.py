@@ -1,4 +1,4 @@
-from app import app
+from flask import current_app
 import requests
 from flask_babel import _
 
@@ -9,7 +9,7 @@ def translate(text, source_language, dest_language):
     # ...and the tutorial: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xiv-ajax
 
     # Add your key and endpoint
-    key = app.config["MS_TRANSLATOR_KEY"]
+    key = current_app.config["MS_TRANSLATOR_KEY"]
     if not key:
         return _("Error: the translation service is not configured.")
 
