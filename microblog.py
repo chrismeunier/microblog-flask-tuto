@@ -1,7 +1,6 @@
-from app import create_app
+from app import create_app, db
 import sqlalchemy as sa
 import sqlalchemy.orm as so
-from app import cli  # register new commands
 
 # Start the server with `flask run` if `set FLASK_APP=microblog.py`
 # or with `flask --app microblog run`

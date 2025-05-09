@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, current_app
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -11,9 +11,8 @@ import logging
 from logging.handlers import RotatingFileHandler, SMTPHandler
 
 def get_locale():
-    return "fr"
-    # TODO: reset the default language detection
-    # return request.accept_languages.best_match(app.config["LANGUAGES"])
+    # return "fr"
+    return request.accept_languages.best_match(current_app.config["LANGUAGES"])
 
 db = SQLAlchemy()
 migrate = Migrate()
