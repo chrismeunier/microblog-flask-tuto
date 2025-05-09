@@ -26,7 +26,7 @@ def translate(text, source_language, dest_language):
     headers = {
         "Ocp-Apim-Subscription-Key": key,
         # location required if you're using a multi-service or regional (not global) resource.
-        "Ocp-Apim-Subscription-Region": app.config["MS_TRANSLATOR_LOCATION"],
+        "Ocp-Apim-Subscription-Region": current_app.config["MS_TRANSLATOR_LOCATION"],
     }
 
     # You can pass more than one object in body.
