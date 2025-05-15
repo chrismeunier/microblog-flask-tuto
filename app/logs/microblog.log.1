@@ -1,4 +1,4 @@
-2025-04-17 14:36:59,790 ERROR: Exception on /edit_profile [POST] [in C:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\env-flask\lib\site-packages\flask\app.py:875]
+2025-04-18 22:02:31,834 ERROR: Exception on /edit_profile [POST] [in C:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\env-flask\lib\site-packages\flask\app.py:875]
 Traceback (most recent call last):
   File "C:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\env-flask\lib\site-packages\sqlalchemy\engine\base.py", line 1964, in _exec_single_context
     self.dialect.do_execute(
@@ -68,7 +68,43 @@ Traceback (most recent call last):
   File "C:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\env-flask\lib\site-packages\sqlalchemy\engine\default.py", line 945, in do_execute
     cursor.execute(statement, parameters)
 sqlalchemy.exc.IntegrityError: (sqlite3.IntegrityError) UNIQUE constraint failed: user.username
-[SQL: UPDATE user SET username=? WHERE user.id = ?]
-[parameters: ('prems', 2)]
+[SQL: UPDATE user SET username=?, about_me=? WHERE user.id = ?]
+[parameters: ('prems', "Je suis le deuxième arrivé sur ce site super!\r\nMais j'aimerais être le premier... ouais ouais", 2)]
 (Background on this error at: https://sqlalche.me/e/20/gkpj)
-2025-04-18 22:02:09,591 INFO: Microblog startup [in C:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\tuto-microblog\app\__init__.py:53]
+2025-04-18 22:04:52,528 INFO: Microblog startup [in C:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\tuto-microblog\app\__init__.py:53]
+2025-04-18 22:13:46,704 INFO: Microblog startup [in C:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\tuto-microblog\app\__init__.py:53]
+2025-04-19 17:33:45,229 INFO: Microblog startup [in c:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\tuto-microblog\app\__init__.py:60]
+2025-04-19 21:51:23,737 INFO: Microblog startup [in C:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\tuto-microblog\app\__init__.py:62]
+2025-04-19 21:51:57,623 INFO: Microblog startup [in C:\Users\Christophe\Documents\Python Scripts\web stuff\flask-test\tuto-microblog\app\__init__.py:62]
+2025-05-08 13:42:39,793 INFO: Microblog startup [in /home/piserver/microblog/app/__init__.py:82]
+2025-05-08 13:42:39,884 INFO: Microblog startup [in /home/piserver/microblog/app/__init__.py:82]
+2025-05-08 14:07:28,194 INFO: Microblog startup [in /home/piserver/microblog/app/__init__.py:82]
+2025-05-08 14:07:28,286 INFO: Microblog startup [in /home/piserver/microblog/app/__init__.py:82]
+2025-05-08 14:09:05,983 ERROR: Exception on /translate [POST] [in /home/piserver/microblog/venv/lib/python3.11/site-packages/flask/app.py:875]
+Traceback (most recent call last):
+  File "/home/piserver/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/piserver/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/piserver/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/piserver/microblog/venv/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/piserver/microblog/venv/lib/python3.11/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/piserver/microblog/app/main/routes.py", line 176, in translate_text
+    "text": translate(data["text"], data["source_language"], data["dest_language"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/piserver/microblog/app/translate.py", line 29, in translate
+    "Ocp-Apim-Subscription-Region": app.config["MS_TRANSLATOR_LOCATION"],
+                                    ^^^
+NameError: name 'app' is not defined
+2025-05-08 14:10:23,896 INFO: Microblog startup [in /home/piserver/microblog/app/__init__.py:82]
+2025-05-08 14:10:23,947 INFO: Microblog startup [in /home/piserver/microblog/app/__init__.py:82]
+2025-05-08 15:49:38,949 INFO: Microblog startup [in /home/piserver/microblog/app/__init__.py:82]
+2025-05-08 15:49:38,950 INFO: Microblog startup [in /home/piserver/microblog/app/__init__.py:82]
